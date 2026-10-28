@@ -1,0 +1,271 @@
+{
+  "name": "vscode-copilot-pixel-companion",
+  "displayName": "Copilot Pixel Companion",
+  "description": "Your AI coding buddy, one pixel at a time. An animated pixel-art companion that reacts to observable GitHub Copilot activity in VS Code.",
+  "version": "0.1.0",
+  "publisher": "vscode-copilot-pixel",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0B1020",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "copilot",
+    "pixel art",
+    "companion",
+    "pet",
+    "animation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vscode-copilot-pixel/vscode-copilot-pixel-companion.git"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "copilotPixelCompanion",
+          "title": "Copilot Pixel Companion",
+          "icon": "media/activity-bar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "copilotPixelCompanion": [
+        {
+          "id": "copilotPixelCompanion.view",
+          "name": "Companion",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "copilotPixelCompanion.show",
+        "title": "Show Companion",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.hide",
+        "title": "Hide Companion",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.toggle",
+        "title": "Toggle Companion",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.setCharacter",
+        "title": "Set Character",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.setEnvironment",
+        "title": "Set Environment",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.setAnimationEnabled",
+        "title": "Toggle Animations",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.setManualState",
+        "title": "Set Manual State",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.clearActivityHistory",
+        "title": "Clear Activity History",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.resetSettings",
+        "title": "Reset Settings",
+        "category": "Copilot Pixel Companion"
+      },
+      {
+        "command": "copilotPixelCompanion.showDiagnostics",
+        "title": "Show Diagnostics",
+        "category": "Copilot Pixel Companion"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "copilotPixelCompanion.setCharacter",
+          "when": "view == copilotPixelCompanion.view",
+          "group": "navigation@1"
+        },
+        {
+          "command": "copilotPixelCompanion.clearActivityHistory",
+          "when": "view == copilotPixelCompanion.view",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Copilot Pixel Companion",
+      "properties": {
+        "copilotPixelCompanion.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables or disables the visual companion. When disabled, no views or status bar items are created."
+        },
+        "copilotPixelCompanion.character": {
+          "type": "string",
+          "default": "byte",
+          "enum": [
+            "byte",
+            "pixel",
+            "bugsy"
+          ],
+          "enumDescriptions": [
+            "Byte - a tiny purple and cyan robotic cat.",
+            "Pixel - a small floating ghost.",
+            "Bugsy - a tiny green bug-like robot."
+          ],
+          "description": "Selects the pixel-art companion character."
+        },
+        "copilotPixelCompanion.environment": {
+          "type": "string",
+          "default": "cozyDesk",
+          "enum": [
+            "cozyDesk",
+            "nightStudio",
+            "pixelGarden"
+          ],
+          "enumDescriptions": [
+            "Cozy Desk - a warm lit desk with a monitor.",
+            "Night Studio - a dark room with city lights outside.",
+            "Pixel Garden - a quiet outdoor scene with plants."
+          ],
+          "description": "Selects the background environment shown behind the character."
+        },
+        "copilotPixelCompanion.animationsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables character animations. When disabled the character renders a static pose."
+        },
+        "copilotPixelCompanion.animationSpeed": {
+          "type": "string",
+          "default": "normal",
+          "enum": [
+            "slow",
+            "normal",
+            "fast"
+          ],
+          "description": "Playback speed multiplier for character animations."
+        },
+        "copilotPixelCompanion.characterSize": {
+          "type": "string",
+          "default": "medium",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "description": "Rendered size of the character in the companion view."
+        },
+        "copilotPixelCompanion.reducedMotion": {
+          "type": "boolean",
+          "default": false,
+          "description": "Reduces or disables non-essential animation and particle effects."
+        },
+        "copilotPixelCompanion.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Shows a status bar item that reflects the companion's current activity."
+        },
+        "copilotPixelCompanion.showElapsedTime": {
+          "type": "boolean",
+          "default": true,
+          "description": "Shows how long the current observed activity has been running. Elapsed time is not task progress."
+        },
+        "copilotPixelCompanion.showActivityTimeline": {
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the recent activity timeline panel in the companion view."
+        },
+        "copilotPixelCompanion.showInferredActivity": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allows generic editor activity to drive the character when no direct Copilot signal is available. Inferred activity is always labelled as such."
+        },
+        "copilotPixelCompanion.manualMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Lets you drive the character state manually. Automatic activity detection is suspended while enabled."
+        },
+        "copilotPixelCompanion.activityTimeoutSeconds": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "maximum": 600,
+          "description": "Seconds after which stale inferred activity is expired. This is never treated as proof that a Copilot task completed."
+        },
+        "copilotPixelCompanion.persistActivityHistory": {
+          "type": "boolean",
+          "default": false,
+          "description": "Stores the activity timeline between sessions in local extension storage. Only sanitized event labels and timestamps are stored - never prompts, responses or code."
+        },
+        "copilotPixelCompanion.showActivityDetails": {
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the sanitized activity source and detection confidence in the companion view."
+        },
+        "copilotPixelCompanion.maxActivityHistory": {
+          "type": "number",
+          "default": 20,
+          "minimum": 5,
+          "maximum": 100,
+          "description": "Maximum number of activity timeline entries kept in memory."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./ && tsc -p tsconfig.webview.json --noEmit && node esbuild.js",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src webview/src test --ext .ts",
+    "pretest": "npm run compile",
+    "test": "npm run test:unit",
+    "test:unit": "node ./tools/runUnitTests.js",
+    "test:integration": "node ./out/test/runTest.js",
+    "package": "vsce package --no-dependencies --allow-missing-repository",
+    "assets": "node tools/generate-assets.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vscode/test-electron": "^2.3.9",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.57.0",
+    "glob": "^10.3.12",
+    "mocha": "^10.4.0",
+    "typescript": "^5.4.3"
+  }
+}

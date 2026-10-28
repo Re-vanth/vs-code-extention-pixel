@@ -1,0 +1,69 @@
+{
+  "id": "bugsy",
+  "name": "Bugsy",
+  "personality": "enthusiastic, hardworking, easily excited",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "states": {
+    "idle": {
+      "file": "idle.png",
+      "frames": 6,
+      "duration": 220,
+      "loop": true
+    },
+    "think": {
+      "file": "think.png",
+      "frames": 4,
+      "duration": 180,
+      "loop": true
+    },
+    "type": {
+      "file": "type.png",
+      "frames": 6,
+      "duration": 95,
+      "loop": true
+    },
+    "code": {
+      "file": "code.png",
+      "frames": 6,
+      "duration": 95,
+      "loop": true
+    },
+    "review": {
+      "file": "review.png",
+      "frames": 3,
+      "duration": 200,
+      "loop": true
+    },
+    "success": {
+      "file": "success.png",
+      "frames": 6,
+      "duration": 75,
+      "loop": false
+    },
+    "error": {
+      "file": "error.png",
+      "frames": 3,
+      "duration": 200,
+      "loop": true
+    },
+    "wait": {
+      "file": "wait.png",
+      "frames": 4,
+      "duration": 220,
+      "loop": true
+    },
+    "pause": {
+      "file": "pause.png",
+      "frames": 4,
+      "duration": 260,
+      "loop": true
+    },
+    "sleep": {
+      "file": "sleep.png",
+      "frames": 4,
+      "duration": 320,
+      "loop": true
+    }
+  }
+}
